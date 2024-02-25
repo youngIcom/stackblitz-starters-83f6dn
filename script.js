@@ -156,4 +156,12 @@ document.addEventListener(RENDER_EVENT, function () {
       uncompletedTODOList.append(todoElement);
     }
   }
+
+  function saveData() {
+    if (isStorageExist()) {
+      const parsed = JSON.stringify(todos);
+      localStorage.setItem('STORAGE_KEY', parsed);
+      document.dispatchEvent(new Event(SAVED_EVENT));
+    }
+  }
 });
