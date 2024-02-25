@@ -97,6 +97,7 @@ function addTodo() {
   const todoObject = generateTodoObject(generatedID, textTodo, timestamp, false)
   todos.push(todoObject);
   document.dispatchEvent(new Event(RENDER_EVENT));
+  saveData();
 }
 
 function addTaskToCompleted(todoId /* HTMLELement */) {
@@ -106,6 +107,7 @@ function addTaskToCompleted(todoId /* HTMLELement */) {
 
   todoTarget.isCompleted = true;
   document.dispatchEvent(new Event(RENDER_EVENT));
+  saveData();
 }
 
 function removeTaskFromCompleted(todoId /* HTMLELement */) {
@@ -115,6 +117,7 @@ function removeTaskFromCompleted(todoId /* HTMLELement */) {
 
   todos.splice(todoTarget, 1);
   document.dispatchEvent(new Event(RENDER_EVENT));
+  saveData();
 }
 
 function undoTaskFromCompleted(todoId /* HTMLELement */) {
@@ -124,6 +127,7 @@ function undoTaskFromCompleted(todoId /* HTMLELement */) {
 
   todoTarget.isCompleted = false;
   document.dispatchEvent(new Event(RENDER_EVENT));
+  saveData();
 }
 
 document.addEventListener('DOMContentLoaded', function () {
